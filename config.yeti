@@ -1,0 +1,59 @@
+# $Id$
+# ex: set ts=2 et:
+
+#ALIAS $LocalIPs     [ 10.0.0.0/8 172.0.0.0/8 192.168.0.0/16 ]
+#ALIAS $GatewayIP    207.234.129.1
+#ALIAS $GatewayMAC   00:00:0C:07:AC:14
+
+RULE "YETI ARP:REQ is 207.234.128.0/17"
+  MATCH ARP:REQ
+  ASSERT ARP.SRC.IP IN [
+    207.234.128.0/17  # local
+    207.36.0.0/16     # why do i see this?
+    72.4.128.0/17     # across the router, 1 hop
+  ]
+  ;
+
+RULE "YETI ARP \"Gateway\""
+  MATCH ARP:RESP ARP.SRC.IP IS 207.234.129.1
+  ASSERT ARP.SRC.MAC IS 00:00:0C:07:AC:14
+  ;
+
+RULE "YETI External IP Traffic -> Gateway"
+  MATCH IP IP.DST NOT IN [
+    207.234.0.0/16    # local here
+    224.0.0.0/4       # multicast
+    # unexplained
+    207.36.0.0/16     # why do i see this?
+  ]
+  ASSERT ETH.DST IN [
+    00:00:0c:07:ac:14 # gateway
+    # other switches/routers in this hosting facility?
+    00:0c:f1:e9:ed:90 # who is this?! (207.36.47.1)?
+    00:0c:f1:b4:26:12 # routes for 72.4.255.255/17?
+    00:0c:f1:b4:5d:77 # routes from 72.4.255.255/17?
+    00:11:11:92:90:24 # routes to 72.4.165.44?
+    00:d0:02:c6:08:00 # routes from 221.127.100.55?
+  ]
+  ;
+
+RULE "YETI TEST ICMP"
+  MATCH ICMP
+  ASSERT ICMP.TYPE IN [
+    0x0 # PONG
+    0x8 # PING
+    0x3 # DEST UNREACH
+    0xB # TTL EXCEEDED
+  ] 
+  ;
+
+RULE "YETI TEST BOOTP - HIGHLIGHT"
+  MATCH BOOTP BOOTP.TYPE IS 0x2 # BOOTP Reply
+  ASSERT ETH.DST IS 00:11:22:33:44:55
+  ;
+
+RULE "YETI TEST TCP SYN"
+  MATCH TCP:SYN
+  ASSERT TCP.FLAG.RST IS 0 AND TCP.FLAG.FIN IS 0
+  ;
+

@@ -1,0 +1,63 @@
+
+monitor network traffic with a series of rules which expose any unexpected or
+incorrect activity, i.e.
+
+ALIAS $Internal IP [ 10.0.0.0/8 172.0.0.0/16 192.168.0.0/16 ]
+ALIAS $External NOT $Internal
+ALIAS $Gateways IP [ 10.43.111.1 10.43.96.254 ]
+
+ALARM "HIGH"
+	EMAIL [ "admin@foo.com" "admin2@foo.com" ]
+	AUDIO "ayooga"
+;
+
+RULE "optional rule name"
+	EXPLAIN "10.43.111.1 should always be Cisco"
+	ALARM "HIGH"
+	MATCH
+		ARP:REPLY
+		FROM:IP IS 10.43.111.1
+	ASSERT (
+		FROM:MAC IN [ 00:12:d9:f5:9f:1e 00:12:d9:* ]
+		OR (
+			TO:MAC IS NOT 00:00:00:00:00:00
+			AND
+			TO:IP IS 10.43.97.15
+		)
+	)
+;
+
+RULE "Rogue DHCP"
+	MATCH
+		BOOTP:REPLY
+	ASSERT
+		FROM:IP IN [ 10.43.96.8 10.43.96.9 ]
+;
+
+RULE "Rogue DNS"
+	MATCH
+		DNS:REPLY
+	ASSERT
+		FROM:IP IN [ 10.43.96.8 10.43.96.9 ]
+;
+
+
+if any ARP response is ever sent identifying 10.43.111.1 to a MAC address
+other than those specified, an error is logged
+
+
+Types:
+
+MAC
+IP
+Port
+
+
+Protocols:
+
+Eth
+ARP
+BOOTP
+ICMP
+
+

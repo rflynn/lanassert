@@ -1,0 +1,566 @@
+# $Id$
+# ex: set ts=4 noet:
+
+VAR $MAC_BROADCAST		ff:ff:ff:ff:ff:ff ;
+VAR $MAC_EMPTY			00:00:00:00:00:00 ;
+
+#
+# Networks and classes/groups of machines
+#
+VAR $LOCAL
+	[
+		10.0.0.0/8			# 
+		169.254.0.0/16		# RFC 3330
+		172.16.0.0/12		# RFC 1918
+		192.168.0.0/16		# 
+	] ;
+VAR $LOCAL_NET
+	[
+		10.43.96.0/20		# wired
+		10.44.22.0/20		# wifi
+		10.71.62.0/24		# ?
+		192.168.0.0/16		# fraggle
+	] ;
+VAR $INTERNAL_NET
+	[
+		10.43.96.0/20		# wired
+		10.44.22.0/20		# wifi
+		224.0.0.0/4			# multicast
+		223.0.0.0/8			# IANA reserved for something...?
+		0.0.0.0				# no IP
+		255.255.255.255		# broadcast
+		# exceptions...
+		10.0.188.10			# unconfigured TIGERs
+	] ;
+VAR $BOGONS
+	[
+
+# List of IANA bogons (ip blocks not allocated by IANA to RIRs and
+# ips reserved for private and special use by IANA based on RFCs)
+# For more information please see http://www.completewhois.com/bogons/
+# and the following ip4 information files:
+#   http://www.completewhois.com/iana-ipv4-addresses.txt
+#   htpt://www.completewhois.com/iana-ipv4-specialuse.txt
+#
+# This file does not include the following additional iana reserved blocks:
+#   10.0.0.0 255.0.0.0       - reserved for intranet local networks
+#   127.0.0.0 255.0.0.0	     - reserved for local loop on each computer
+#   172.16.0.0 255.240.0.0   - reserved for intranet local networks
+#   192.168.0.0 255.255.0.0  - reserved for intranet local networks
+#   224.0.0.0 240.0.0.0      - used for multicast routing
+# All these ip blocks are commonly used for local ethernet or local machine
+# and hence if you filter them you may accidently shut down your own network
+# Please manually add to your configuration those of the above blocks that
+# you know for certain are not used on your local network
+#
+# This file was last modified on Tue Apr 17 09:14:31 PDT 2007 
+#0.0.0.0/7 # don't include since BOOTP uses it
+2.0.0.0/8
+5.0.0.0/8
+7.0.0.0/8
+23.0.0.0/8
+27.0.0.0/8
+31.0.0.0/8
+36.0.0.0/7
+39.0.0.0/8
+42.0.0.0/8
+49.0.0.0/8
+50.0.0.0/8
+94.0.0.0/7
+100.0.0.0/6
+104.0.0.0/5
+112.0.0.0/6
+169.254.0.0/16
+173.0.0.0/8
+174.0.0.0/7
+176.0.0.0/5
+184.0.0.0/6
+191.0.0.0/8
+192.0.2.0/24
+197.0.0.0/8
+198.18.0.0/15
+223.0.0.0/8
+240.0.0.0/4
+	] ;
+
+#
+# Network service providers
+#
+VAR $DHCPD_MACS
+	[
+		00:0F:1F:69:F0:2A
+		#00:0f:66:50:a5:fe 10.43.96.7
+	] ;
+VAR $ROUTER_MACS
+	[
+		ff:ff:ff:ff:ff:ff	# broadcast
+		# T1
+		00:12:d9:f5:9f:1e	# pluto
+		00:11:43:30:20:4d	# pluto
+		# DSL
+		#00:09:5B:D9:34:E2	# older crap Netgear
+		00:0b:db:7a:af:a4	# Guzie's linux box
+	] ;
+VAR $ROUTER_IPS
+	[
+		10.43.96.8			# pluto
+		10.43.96.9			# pluto
+		10.43.96.254		# pix
+	] ;
+VAR $DNS_IPS
+	[
+		10.43.96.7
+		10.43.96.8
+		10.43.96.9
+		# external DNS
+		204.117.214.10
+		# emergency external DNS
+		4.2.2.1
+		4.2.2.2
+	] ;
+
+#
+# Ethernet
+#
+RULE "ETH Expected Protocol"
+	# detect any unusual or unexpected ethernet protocols
+	MATCH ETH
+	ASSERT
+	ETH.LEN < 1500	# 802.2 uses lengths
+	OR ETH.TYPE IN [	# 802.3 uses codes > 1500
+		0x0800	# IP
+		0x0806	# ARP
+		0x8781	# some Symbol Wi-Fi shit
+		0x9000	# Loopback
+	];
+
+RULE "ETH Known MAC Addr"
+	# Ref: http://standards.ieee.org/regauth/oui/oui.txt
+	# Detect any ethernet traffic from unexpected vendor cards...
+	# And I'll need to track down where some of these are coming from...
+	DISABLED # too many damn MACs...
+	MATCH ETH
+	ASSERT
+		ETH.VENDID IN [
+			#
+			# Dell
+			#
+			0x00065B
+			0x000874
+			0x000BDB
+			0x000D56
+			0x000F1F
+			0x00B0D0
+			0x00C04F
+			0x001143
+			0x00123F
+			0x001372
+			0x001422
+			0x0015C5
+			0x00188B
+			0x0019B9
+			#
+			# Intel
+			#
+			0x000347
+			0x001111
+			0x00a0c9
+			0x0013ce
+			0x001500
+			0x00166f
+			0x000cf1
+			0x000e35
+			0x0019d2
+			#
+			# Cisco
+			#
+			0x000B60
+			0x000F66	# Cisco-Linksys
+			0x0012D9
+			0x0012DA
+			0x0016B6	# Cisco-Linksys
+			0x00175a
+			0x000B85	# Cisco "Wireless Controller"
+			#
+			# 3Com
+			#
+			0x000102
+			0x00104B
+			0x00105A
+			0x0016e0
+			0x006008
+			#
+			# Symbol
+			#
+			0x001570
+			0x00A0F8
+			#
+			# Netgear
+			#
+			0x00095B
+			0x00146C
+			#
+			# Hewlett Packard
+			#
+			0x001635
+			0x0030C1
+			0x0060B0
+			#
+			# Linksys
+			#
+			0x000625
+			#
+			# Gemtek
+			#
+			0x0014a5
+			0x00904b	
+			#
+			# Agere
+			#
+			0x00022d
+			#
+			# Miscellaneous
+			#
+			0x000050	# Radisys					?
+			0x0006B1	# Sonicwall					VPN machine
+			0x0090E8	# Moxa
+			0x00032d	# IBASE
+			0x0060e9	# Atop "Tiger"s using Atop NICs
+			0x000C29	# VMWare ;)
+		]
+		OR ETH.SRC IN [
+			# specific machines that run unusual or uncommon NICs and we'd rather
+			# greenlight individually rather than wholesale
+			# MAC				Vendor				Machine
+			#================== =================== ==============================================
+			00:00:c0:11:c6:f4	# Western Digital	LOBBY2K
+			00:00:c0:f5:e2:ed	# Western Digital	CARDIOPU-2Y1XFW
+			00:02:6b:01:3d:97	# Broadcom			STACEYKIOSK
+			00:02:6b:01:3e:1d	# Broadcom			CAGE(?)
+			00:0d:60:b1:61:57	# IBM				OBERON
+			00:0b:7d:1c:ac:94	# Solomon Extreme	JORDAN
+			00:0f:b5:57:00:0c	# Netgear			SEGYAP
+			00:10:b5:44:ef:76	# Accton			PAVILION
+			00:40:05:35:b6:72	# D-Link			PRODUCTION07
+			00:40:9d:2d:a4:0f	# Digiboard, Inc. 	"The Digi" serial server... tons of open ports
+			00:40:9d:2d:a3:c3	# another Digi
+			00:40:d0:15:d6:53	# Mitac Int'l		RECEIVING
+			00:40:d0:14:16:d3	# Mitac Int'l		SHIPPING
+			00:80:87:94:e3:55	# OKI Electric		some OKI printer
+			00:a0:cc:23:f4:51	# Lite-On			JOED
+			08:00:46:a7:f9:ca	# Sony				HLISONY
+			00:90:96:b0:26:16	# Askey Computer	LAPTOPMAXIMUS
+			00:00:aa:65:f6:c3	# Xerox				XRXMAILRM (xerox Workcentre Pro) 10.43.96.213
+			00:18:8b:30:60:59	# ?					BERNOULLINET01 (10.43.97.103)
+			00:13:72:a9:37:b4	# ?					LIFEVUECNS (10.43.97.102)
+			08:00:06:05:40:01	# Siemens			misconfigured (10.44.22.50)
+			00:03:2d:07:27:4f	# IBASE?			10.43.97.2 "prez" Oxinet test machine?
+			00:11:50:2a:8a:99	# ?					10.43.97.79
+			00:02:a5:09:cc:3b	# 10.43.97.82
+			00:0b:db:16:57:f3	# my NIC!
+			00:13:72:63:29:28	# ?					10.43.97.39
+			00:0d:56:8f:bb:4b	# BERNOULLI-DEMO	10.43.97.63
+			00:18:4d:00:c1:52	# Netgear			10.44.22.88
+			00:18:4d:00:c1:4e	# Netgear			10.43.97.55
+			00:03:25:19:31:7b	# Arima(?!)			CPCLAPTOP (10.43.97.82)
+			00:19:e3:05:fb:1c	# Guzie's macbook(?!)
+			00:00:c0:54:eb:f9	# GALEN(?!) (10.43.97.54)
+			# CPC-BRIAN (10.43.97.25)
+			00:0d:60:8d:d4:2f	# IBM
+			00:05:4e:45:f5:b1	# Philips
+			#
+			# Atop "Liger"s using Giga-Byte NICs
+			#
+			00:16:e6:42:a0:82	# 10.43.97.80
+			00:16:e6:41:af:3c	# 10.43.97.15
+			00:60:e9:01:97:25	# 10.71.62.11
+			#
+			# unexplained...
+			#
+			#00:02:2d:13:d5:86	# Agere Systems		? 10.43.97.22
+			#00:02:2d:6c:bd:87	# Agere				? 10.43.97.96
+			#00:02:2d:85:6c:12	#					? 10.43.96.41
+			#00:16:e0:07:11:d5	# ?
+			#
+			#00:02:2d:69:83:0b	# Agere				"alpedhuez" 10.43.97.39
+			#00:02:2d:85:6f:9d	# Yet Another Agere
+			#00:02:2d:7c:57:84	# Agere
+			00:19:b9:5b:8f:78
+		]
+	;
+
+#
+# ARP
+#
+# detect anyone trying to impersonate any important servers.
+#
+# we had an issue recently where an older machine was taken out
+# of service but still attached to a UPS; when the building lost
+# power the UPS powered the box back on and it and the "new" machine
+# ARPed for the same address, causing general mayhem
+#
+RULE "CPC ARP pluto 10.43.96.8"
+	MATCH ARP:RESP ARP.SRC.IP IS	10.43.96.8
+	ASSERT ARP.SRC.MAC IN 	[
+									00:11:43:30:20:4d
+									00:12:d9:f5:9f:1e
+							]
+	;
+RULE "CPC ARP pluto 10.43.96.9"
+	MATCH ARP:RESP ARP.SRC.IP IS	10.43.96.9
+	ASSERT ARP.SRC.MAC IS			00:11:43:30:20:4d
+	;
+RULE "CPC ARP mars"
+	MATCH ARP:RESP ARP.SRC.IP IS	10.43.96.2
+	ASSERT ARP.SRC.MAC IS			00:A0:C9:D8:B6:A8
+	;
+RULE "CPC ARP mercury"
+	MATCH ARP:RESP ARP.SRC.IP IS	10.43.96.7
+	ASSERT ARP.SRC.MAC IS			00:0F:1F:69:F0:2A
+	;
+RULE "CPC ARP jupiter"
+	MATCH ARP:RESP ARP.SRC.IP IS	10.43.96.4
+	ASSERT ARP.SRC.MAC IS			00:0D:56:BC:33:68
+	;
+RULE "CPC ARP fraggle"
+	MATCH ARP:RESP ARP.SRC.IP IS	10.43.96.125
+	ASSERT ARP.SRC.MAC IS			00:08:74:dc:30:f4 #00:18:8b:3e:a5:53
+	;
+RULE "CPC ARP saleslogix"
+	MATCH ARP:RESP ARP.SRC.IP IS	10.43.96.5
+	ASSERT ARP.SRC.MAC IS			00:0B:DB:E7:9A:C4
+	;
+RULE "CPC PRINTER 10.43.97.93"
+	MATCH ARP:RESP ARP.SRC.IP IS	10.43.97.93
+	ASSERT ARP.SRC.MAC IS			08:00:37:37:7E:2C
+	;
+
+RULE "CPC TEST 10.43.101.93"
+	MATCH ARP:RESP ARP.SRC.IP IS	10.43.101.93
+	ASSERT ARP.SRC.MAC IS			00:00:00:00:00:00
+	;
+
+
+
+# when a DHCP-configured (Windows) machine fails to find a server
+# it gives itself an IP in this range
+# Ref: RFC 3330
+RULE "CPC DHCP failure 169.254.0.0/16"
+	#DISABLED # do we really need this? besides, it looks like failed dhcp clients ARP anyways so we pick them up that way
+	MATCH IP
+	ASSERT
+		IP.SRC != 169.254.0.0/16
+		#AND IP.DST != 169.254.0.0/16
+	BREAK
+	;
+
+
+RULE "CPC ARP:REQ SRC is legit"
+	MATCH ARP:REQ
+	ASSERT
+		ARP.SRC.IP IN $LOCAL_NET	 # normal ARP
+		OR (
+			# normal ARP from a machine that does not know its IP
+			ARP.SRC.IP IS 0.0.0.0
+			AND ARP.DST.MAC IS $MAC_BROADCAST
+			AND ARP.DST.IP IS 0.0.0.0
+		)
+		#
+		# specific violations. we record them here to document them for
+		# future investigation and to reduce noise
+		#
+		# NOTE: dhcp clients w/o a server-allocated IP will select an IP in
+		# 169.254.0.0/16 but we do not "OK" them here because even though the
+		# usual behavior is OK, we should be notified of any extended behavior
+		#
+		OR (
+			# hard-reset or new "Tiger" bridges are hardcoded to this IP range
+			ARP.SRC.IP IS 10.0.50.0/24	# initial IP is 10.0.50.10[01]
+			AND ARP.DST.IP IS 10.0.50.0/24
+			AND ETH.VENDID IS 0x000cf1	# uses Intel NICs, apparently
+		)
+		OR (
+			# some misconfigured Atop Tiger
+			ETH.SRC IS 00:60:e9:01:97:25 # Atop
+			AND IP.SRC IS 10.71.62.11
+		)
+		OR (
+			# sonicwall ARPs for external IP internally...?
+			ARP.SRC.MAC IN [
+				00:06:b1:11:ca:d0
+			]
+			AND ARP.DST.IP IS 66.152.246.204
+		)
+	;
+RULE "CPC ARP:RESP SRC IP is legit"
+	MATCH ARP:RESP
+	ASSERT
+		ARP.SRC.IP IN $LOCAL_NET
+		AND ARP.DST.IP IN $LOCAL_NET
+	# an American Telecare NIC continuously broadcasts that it is IP 0.0.0.0...
+	OR (
+		ARP.SRC.MAC IS 00:a0:f8:2b:e1:17
+		AND ARP.SRC.IP IS 0.0.0.0
+		AND ARP.DST.MAC IS $MAC_BROADCAST
+		AND ARP.DST.IP IS 0.0.0.0
+	)
+	;
+
+#
+# BOOTP a.k.a. DHCP
+# 
+# detect any unauthorized server providing BOOTP/DHCP services.
+#
+# we've had issues with misconfigured "personal" (Cisco-Linksys) routers
+# being plugged in and handing out conflicting ip addresses, which of
+# course only happens very occasionally and is fun to track down!
+#
+RULE "CPC DHCP SERVER AUTHORIZED"
+	MATCH BOOTP:RESP
+	# FIXME: is this kosher with switches in the middle?
+	ASSERT ETH.SRC IS $DHCPD_MACS
+	;
+
+#
+# DNS
+#
+# detect any rogue DNS servers; this has not been an issue thusfar
+#
+RULE "CPC DNS:REQ DEST AUTHORIZED"
+	MATCH DNS:REQ
+	ASSERT IP.DST IN $DNS_IPS
+	;
+RULE "CPC DNS:RESP SRC AUTHORIZED"
+	MATCH DNS:RESP
+	ASSERT IP.SRC IN $DNS_IPS
+	;
+
+#
+# IP
+#
+RULE "CPC Valid Local IP"
+	MATCH IP
+	ASSERT IP.SRC IN $LOCAL_NET
+	OR IP.SRC NOT IN [ 10.0.0.0/8 172.0.0.0/8 ] # why this?
+	BREAK
+	;
+RULE "CPC IP External Traffic -> Authorized Gateways"
+	DISABLED # fraggle *is* the gateway
+	MATCH IP IP.DST NOT IN $INTERNAL_NET
+	ASSERT ETH.DST IN $ROUTER_MACS
+	;
+RULE "CPC IP External Source <- Authorized Gateway"
+	DISABLED # fraggle *is* the gateway
+	MATCH IP IP.SRC NOT IN $INTERNAL_NET
+	ASSERT ETH.SRC IN $ROUTER_MACS
+	;
+RULE "CPC IP BOGONS!"
+	# match IP against list of known bogons
+	MATCH IP
+	ASSERT IP.SRC NOT IN $BOGONS
+	BREAK
+	;
+
+#
+# ICMP
+#
+RULE "CPC ICMP Payload"
+	DISABLED
+	MATCH ICMP
+	ASSERT
+		(
+			ICMP.TYPE IN [ 0x0 0x8 ] # PING or PONG
+			AND (
+				ICMP.LEN IN [
+					32	# Windows ping "ABCDEFGHIJKLMNOPQRSTUVWABCDEFGHI"
+					56	# iputils ping
+					64	# Windows tracert
+				]
+			) OR (
+				ICMP.PAYLOAD IS "DHCPC\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00"
+				OR ICMP.PAYLOAD IS "DHCPC\xFF\xFF\xFF\xFF\xFF\xFF\xFF\xFF\xFF\xFF\xFF\xFF\xFF"
+			)
+		)
+		OR (
+			ICMP.TYPE IS 0x3
+			AND ICMP.CODE IN [ 0x2 0x3 ]
+			AND ETH.SRC IN $ROUTER_MACS
+		)
+		OR ICMP.TYPE IS 0x01 # "Destination Host Unreachable"
+	;
+
+#RULE "NBNS TEST"
+	#MATCH NBNS
+	#ASSERT
+		#NBNS.Q IS 0
+	#;
+
+#
+# Wireless
+#
+RULE "CPC Known Wi-Fi AP"
+	MATCH ETH
+		ETH.TYPE IS 0x8781
+		#AND ETH.DST IS 01:a0:f8:f0:f0:02	# some multicast MAC(?)
+	ASSERT ETH.SRC IN [
+		00:a0:f8:37:a5:ae	# "TEST" Engineering Lab
+		00:a0:f8:b3:2f:41	# some "Symbol Access Point"
+	];
+
+RULE "CPC Loopback is Cisco"
+	#DISABLED # seeing some loopback from 3Com
+	# We should only see loopback traffic from Cisco machines
+	MATCH ETH ETH.TYPE IS 0x9000
+	ASSERT ETH.VENDID IN [
+		0x0012DA
+		0x000BDB
+	];
+
+RULE "CPC Cisco Switch LLC"
+	# be notified of any additions or changes to switch
+	MATCH CDP
+	ASSERT
+	(
+		ETH.SRC IS 00:12:da:b4:ab:2e
+		AND LLC.ORG IS 0x00000c
+		AND CDP.DEVID IS "Switch"
+		AND CDP.PORT IS "FastEthernet0/46"
+		AND CDP.PLATFORM IS "cisco WS-C2950T-48-SI"
+		AND CDP.SOFTWARE IS "Cisco Internetwork Operating System Software\nIOS (tm) C2950 Software (C2950-I6Q4L2-M), Version 12.1(22)EA1b, RELEASE SOFTWARE (fc1)\nCopyright (c) 1986-2004 by cisco Systems, Inc.\nCompiled Tue 24-Aug-04 00:12 by yenanh"
+	) OR (
+		ETH.SRC IS 00:12:da:b4:68:32
+		AND LLC.ORG IS 0x00000c
+		AND CDP.DEVID IS "Switch2"
+		AND CDP.PORT IS "GigabitEthernet0/2"
+		AND CDP.PLATFORM IS "cisco WS-C2950T-48-SI"
+		AND CDP.SOFTWARE IS "Cisco Internetwork Operating System Software\nIOS (tm) C2950 Software (C2950-I6Q4L2-M), Version 12.1(22)EA1b, RELEASE SOFTWARE (fc1)\nCopyright (c) 1986-2004 by cisco Systems, Inc.\nCompiled Tue 24-Aug-04 00:12 by yenanh"
+	)
+	;
+
+RULE "CPC NBDGM Known Dest"
+	#DISABLED # for now... don't want it to floood logs. TODO: sometimes dstname is parsed incorrectly
+	MATCH NBDGM
+	ASSERT
+		NBDGM.DSTNAME IN [
+			"EARTH"
+			"__MSBROWSE__"
+			"BERNGROUP"
+			"RUMBLERS"
+			"MSHOME"
+			"WORKGROUP"
+		]
+	;
+
+RULE "CPC NBNS OP HIGHLIGHT"
+	DISABLED # FIXME: my parser is wrong, opcode is wrong
+	MATCH NBNS
+	ASSERT NBNS.OP IS 0 # query
+	;
+
+# FIXME: doesn't work for some reason... parser won't work
+# NOTE: this always happens to the last protocol in the list...
+#RULE "CPC SNMP TEST"
+	#MATCH SNMP
+	#ASSERT ETH.VENID IS 0
+	#;
+

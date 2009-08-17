@@ -1,0 +1,185 @@
+# $Id$
+# ex: set ts=2 et:
+
+# Note that this syntax gets highlighted in vim quite nicely :p
+
+# My home network is simple... I've got a few machines hooked up
+# to my WRT54g -> cable modem. the WRT54g (from now on "Gateway") should
+# run the whole show. we want to detect if anyone tries to impersonate
+# him or try to provide (bogus) services that only he should provide.
+# we also want to detect any misconfigured clients on the network that
+# may not be using him properly.
+
+VAR $GATEWAY_MAC    00:0C:41:F6:E2:ED ;
+VAR $GATEWAY_IP     192.168.1.1 ;
+VAR $LOCAL_NET      [
+    192.168.1.0/24
+    224.0.0.0/4     # multicast
+  ];
+VAR $DNS_IP         [
+    192.168.1.1
+    167.206.251.77  # external DNS 1
+    167.206.251.14  # external DNS 2
+  ];
+VAR $KNOWN_MAC [
+    00:0c:41:f6:e2:ed # gateway
+    00:0b:db:16:57:f3 # SON-OF-CRASHY
+    00:03:B3:00:1B:0B # pizzabox
+    00:30:65:d7:25:60 # Apple - Julia's G4
+    00:16:CB:B8:4C:19 # Apple
+  ];
+VAR $KNOWN_IP [
+    192.168.1.1     # Gateway
+    192.168.1.2     # Cisco switch
+    192.168.1.100   # pizzabox
+    192.168.1.102   # SON-OF-CRASHY
+    192.168.1.107   # Apple
+  ];
+
+RULE "home ETH known"
+  MATCH ETH
+  ASSERT ETH.SRC IN $KNOWN_MAC
+  OR ETH.VENDID IN [
+    0x0002FD # Cisco (switch)
+  ]
+  ;
+
+RULE "home IP known"
+  DISABLED
+  MATCH IP
+  ASSERT (
+    IP.SRC IN $KNOWN_IP
+    OR IP.DST IN $KNOWN_IP
+  )
+  ;
+
+RULE "home ARP MAC->IP Gateway"
+  # detect any attempt to impersonate our gateway
+  MATCH ARP:RESP ARP.SRC.IP IS  $GATEWAY_IP
+  ASSERT ARP.SRC.MAC IS         $GATEWAY_MAC
+  ;
+
+RULE "home lost DHCP client (ARP)"
+  MATCH ARP:REQ
+  ASSERT ARP.SRC.IP != 169.254.0.0/16
+  BREAK
+  ;
+
+RULE "home lost DHCP client (IP)"
+  MATCH IP
+  ASSERT IP.SRC != 169.254.0.0/16
+  BREAK
+  ;
+
+RULE "home ARP:REQ valid 192.168.1.0/24"
+  # any machines ARPing addresses outside this are misconfigured
+  MATCH ARP:REQ
+  ASSERT
+    ARP.SRC.IP IS 0.0.0.0
+    OR ARP.SRC.IP IN $LOCAL_NET
+  ;
+
+RULE "home DHCP host Gateway"
+  # all BOOTP responses should come from Gateway only
+  MATCH BOOTP:RESP
+  ASSERT ETH.SRC IS             00:0C:41:F6:E2:ED
+  ;
+
+RULE "home DHCP failure by IP 169.254.0.0/16"
+  # if a (Windows) machine fails to register with a DHCP server
+  # it will assume an IP in this range automatically
+  DISABLED
+  MATCH IP IP.SRC IN [ 169.254.0.0/16 ]
+  ASSERT IP.SRC IS NOT 0.0.0.0/0 # guarenteed to fail
+  BREAK 
+  ;
+
+RULE "home Externally bound IP Traffic -> Gateway"
+  # any client that tries to sent non-local traffic to something
+  # other than Gateway is misconfigured
+  MATCH IP IP.DST NOT IN $LOCAL_NET
+  ASSERT ETH.DST IN [
+    00:0C:41:F6:E2:ED # gateway
+    ff:ff:ff:ff:ff:ff # broadcast
+  ]
+  ;
+
+RULE "home DNS spy"
+  MATCH DNS
+  ASSERT ETH.VENDID IS 0
+  BREAK
+  ;
+
+RULE "home DNS Requests -> Gateway"
+  # any DNS client not using Gateway is misconfigured
+  MATCH DNS:REQ
+  ASSERT IP.DST IN              $DNS_IP
+  #
+  # Exceptions...
+  #
+  OR IP.DST IS 38.114.169.184 # FIXME: mystery DNS requests to ns1.verycurious.com, look into
+  ;
+
+RULE "home DNS Response <- Gateway"
+  # all DNS responses should be provided by Gateway only
+  MATCH DNS:RESP
+  ASSERT IP.SRC IN              $DNS_IP
+  ;
+
+RULE "home TEST ICMP unusual"
+  # this just highlights any uncommon ICMP traffic, this is for testing
+  # only and is not a good rule :/
+  MATCH ICMP
+  ASSERT ICMP.TYPE IN [
+    0x0 # PONG
+    0x8 # PING
+    0x3 # DEST UNREACH
+    0xB # TTL EXCEEDED
+  ] 
+  ;
+
+RULE "home ICMP Contents"
+  # ICMP is a great way to covertly transfer data... let's catch it
+  MATCH ICMP
+  ASSERT (
+    #
+    # ping
+    #
+    (
+      ICMP.TYPE IN [ 0x0 0x8 ]
+      AND ICMP.LEN IN [
+        # allow for common ping payload
+        32  # Windows ping
+        56  # iputils ping
+      ]  
+    )
+    #
+    # traceroute
+    #
+    OR (
+      ICMP.TYPE IS 0xB
+      AND
+      (
+        IP.SRC IN $LOCAL_NET
+        OR ICMP.LEN IS 28  # traceroute ttl failed
+      )
+    )
+    #
+    # unreachable
+    #
+    OR (
+      # legitimate external hosts may send us "unreachable" errors
+      # containing contents of previously-sent packets
+      ICMP.TYPE IS 0x3
+      AND ICMP.CODE IS 0x3
+      AND IP.SRC IS $GATEWAY_IP
+    )
+  )
+  ;
+
+RULE "home TEST LLC"
+  DISABLED
+  MATCH LLC 
+  ASSERT ETH.VENDID IS 0
+  ;
+

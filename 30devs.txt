@@ -1,0 +1,741 @@
+<cpc seq="2" type="LA" bid="LA-127.0.0.1" conntype="publisher" version="1.0" datetime="2008-01-23T06:52:31">
+ <device bid="M01" timeout="30500" version="UNKNOWN" model="UNKNOWN" make="HL7" type="Network">
+  <settings>
+   <s name="4084_UNKNOWN">73</s>
+   <s name="HL7_PATID_INT" />
+  </settings>
+  <measurements>
+   <m name="1_HR">73</m>
+   <m name="14_SPO2PCT">100</m>
+   <m name="4550_RR">17</m>
+  </measurements>
+  <alarms />
+  <status>UP</status>
+ </device>
+</cpc>
+<cpc seq="3" type="LA" bid="LA-127.0.0.1" conntype="publisher" version="1.0" datetime="2008-01-23T06:52:31">
+ <device bid="M02" timeout="30500" version="UNKNOWN" model="UNKNOWN" make="HL7" type="Network">
+  <settings>
+   <s name="4084_UNKNOWN">67</s>
+   <s name="HL7_PATID_INT" />
+  </settings>
+  <measurements>
+   <m name="1_HR">72</m>
+   <m name="14_SPO2PCT">97</m>
+   <m name="4550_RR">16</m>
+  </measurements>
+  <alarms />
+  <status>UP</status>
+ </device>
+</cpc>
+<cpc seq="4" type="LA" bid="LA-127.0.0.1" conntype="publisher" version="1.0" datetime="2008-01-23T06:52:31">
+ <device bid="M03" timeout="30500" version="UNKNOWN" model="UNKNOWN" make="HL7" type="Network">
+  <settings>
+   <s name="4084_UNKNOWN">100</s>
+   <s name="HL7_PATID_INT" />
+  </settings>
+  <measurements>
+   <m name="1_HR">100</m>
+   <m name="14_SPO2PCT">100</m>
+   <m name="4550_RR">20</m>
+  </measurements>
+  <alarms />
+  <status>UP</status>
+ </device>
+</cpc>
+<cpc seq="5" type="LA" bid="LA-127.0.0.1" conntype="publisher" version="1.0" datetime="2008-01-23T06:52:31">
+ <device bid="M05B" timeout="30500" version="UNKNOWN" model="UNKNOWN" make="HL7" type="Network">
+  <settings>
+   <s name="4084_UNKNOWN">77</s>
+   <s name="HL7_PATID_INT" />
+  </settings>
+  <measurements>
+   <m name="1_HR">76</m>
+   <m name="14_SPO2PCT">97</m>
+   <m name="4550_RR">21</m>
+  </measurements>
+  <alarms />
+  <status>UP</status>
+ </device>
+</cpc>
+<cpc seq="6" type="LA" bid="LA-127.0.0.1" conntype="publisher" version="1.0" datetime="2008-01-23T06:52:31">
+ <device bid="M05C" timeout="30500" version="UNKNOWN" model="UNKNOWN" make="HL7" type="Network">
+  <settings>
+   <s name="4084_UNKNOWN">66</s>
+   <s name="HL7_PATID_INT" />
+  </settings>
+  <measurements>
+   <m name="1_HR">67</m>
+   <m name="14_SPO2PCT">96</m>
+   <m name="4550_RR">16</m>
+  </measurements>
+  <alarms />
+  <status>UP</status>
+ </device>
+</cpc>
+<cpc seq="7" type="LA" bid="LA-127.0.0.1" conntype="publisher" version="1.0" datetime="2008-01-23T06:52:31">
+ <device bid="M05D" timeout="30500" version="UNKNOWN" model="UNKNOWN" make="HL7" type="Network">
+  <settings>
+   <s name="4084_UNKNOWN">42</s>
+   <s name="HL7_PATID_INT" />
+  </settings>
+  <measurements>
+   <m name="1_HR">96</m>
+   <m name="2_NIBPSYS">106</m>
+   <m name="3_NIBPDIA">87</m>
+   <m name="4_NIBPMEAN">92</m>
+   <m name="14_SPO2PCT">93</m>
+   <m name="4550_RR">17</m>
+  </measurements>
+  <alarms />
+  <status>UP</status>
+ </device>
+</cpc>
+<cpc seq="8" type="LA" bid="LA-127.0.0.1" conntype="publisher" version="1.0" datetime="2008-01-23T06:52:31">
+ <device bid="M13" timeout="30500" version="UNKNOWN" model="UNKNOWN" make="HL7" type="Network">
+  <settings>
+   <s name="4084_UNKNOWN">100</s>
+   <s name="HL7_PATID_INT" />
+  </settings>
+  <measurements>
+   <m name="1_HR">107</m>
+   <m name="2_NIBPSYS">106</m>
+   <m name="3_NIBPDIA">87</m>
+   <m name="4_NIBPMEAN">92</m>
+   <m name="14_SPO2PCT">95</m>
+   <m name="4550_RR">15</m>
+  </measurements>
+  <alarms />
+  <status>UP</status>
+ </device>
+</cpc>
+<cpc seq="9" type="LA" bid="LA-127.0.0.1" conntype="publisher" version="1.0" datetime="2008-01-23T06:52:31">
+ <device bid="M2024" timeout="30500" version="UNKNOWN" model="UNKNOWN" make="HL7" type="Network">
+  <settings>
+   <s name="4084_UNKNOWN">100</s>
+   <s name="HL7_PATID_INT" />
+  </settings>
+  <measurements>
+   <m name="1_HR">73</m>
+   <m name="2_NIBPSYS">106</m>
+   <m name="3_NIBPDIA">87</m>
+   <m name="4_NIBPMEAN">92</m>
+   <m name="14_SPO2PCT">96</m>
+   <m name="4550_RR">36</m>
+  </measurements>
+  <alarms />
+  <status>UP</status>
+ </device>
+</cpc>
+<cpc seq="10" type="LA" bid="LA-127.0.0.1" conntype="publisher" version="1.0" datetime="2008-01-23T06:52:31">
+ <device bid="M2026" timeout="30500" version="UNKNOWN" model="UNKNOWN" make="HL7" type="Network">
+  <settings>
+   <s name="4084_UNKNOWN">100</s>
+   <s name="HL7_PATID_INT" />
+  </settings>
+  <measurements>
+   <m name="1_HR">73</m>
+   <m name="2_NIBPSYS">106</m>
+   <m name="3_NIBPDIA">87</m>
+   <m name="4_NIBPMEAN">92</m>
+   <m name="14_SPO2PCT">96</m>
+   <m name="4550_RR">48</m>
+  </measurements>
+  <alarms />
+  <status>UP</status>
+ </device>
+</cpc>
+<cpc seq="11" type="LA" bid="LA-127.0.0.1" conntype="publisher" version="1.0" datetime="2008-01-23T06:52:31">
+ <device bid="M2029" timeout="30500" version="UNKNOWN" model="UNKNOWN" make="HL7" type="Network">
+  <settings>
+   <s name="4084_UNKNOWN">69</s>
+   <s name="HL7_PATID_INT" />
+  </settings>
+  <measurements>
+   <m name="1_HR">70</m>
+   <m name="2_NIBPSYS">106</m>
+   <m name="3_NIBPDIA">87</m>
+   <m name="4_NIBPMEAN">92</m>
+   <m name="14_SPO2PCT">94</m>
+   <m name="4550_RR">26</m>
+  </measurements>
+  <alarms />
+  <status>UP</status>
+ </device>
+</cpc>
+<cpc seq="12" type="LA" bid="LA-127.0.0.1" conntype="publisher" version="1.0" datetime="2008-01-23T06:52:31">
+ <device bid="M2034" timeout="30500" version="UNKNOWN" model="UNKNOWN" make="HL7" type="Network">
+  <settings>
+   <s name="4084_UNKNOWN">56</s>
+   <s name="HL7_PATID_INT" />
+  </settings>
+  <measurements>
+   <m name="1_HR">56</m>
+   <m name="2_NIBPSYS">106</m>
+   <m name="3_NIBPDIA">87</m>
+   <m name="4_NIBPMEAN">92</m>
+   <m name="14_SPO2PCT">90</m>
+   <m name="4550_RR">17</m>
+  </measurements>
+  <alarms />
+  <status>UP</status>
+ </device>
+</cpc>
+<cpc seq="13" type="LA" bid="LA-127.0.0.1" conntype="publisher" version="1.0" datetime="2008-01-23T06:52:31">
+ <device bid="M2035" timeout="30500" version="UNKNOWN" model="UNKNOWN" make="HL7" type="Network">
+  <settings>
+   <s name="4084_UNKNOWN">56</s>
+   <s name="HL7_PATID_INT" />
+  </settings>
+  <measurements>
+   <m name="1_HR">80</m>
+   <m name="2_NIBPSYS">106</m>
+   <m name="3_NIBPDIA">87</m>
+   <m name="4_NIBPMEAN">92</m>
+   <m name="14_SPO2PCT">97</m>
+   <m name="4550_RR">24</m>
+  </measurements>
+  <alarms />
+  <status>UP</status>
+ </device>
+</cpc>
+<cpc seq="14" type="LA" bid="LA-127.0.0.1" conntype="publisher" version="1.0" datetime="2008-01-23T06:52:31">
+ <device bid="M2036" timeout="30500" version="UNKNOWN" model="UNKNOWN" make="HL7" type="Network">
+  <settings>
+   <s name="4084_UNKNOWN">50</s>
+   <s name="HL7_PATID_INT" />
+  </settings>
+  <measurements>
+   <m name="1_HR">50</m>
+   <m name="2_NIBPSYS">106</m>
+   <m name="3_NIBPDIA">87</m>
+   <m name="4_NIBPMEAN">92</m>
+   <m name="14_SPO2PCT">95</m>
+   <m name="4550_RR">25</m>
+  </measurements>
+  <alarms />
+  <status>UP</status>
+ </device>
+</cpc>
+<cpc seq="15" type="LA" bid="LA-127.0.0.1" conntype="publisher" version="1.0" datetime="2008-01-23T06:52:31">
+ <device bid="M2201" timeout="30500" version="UNKNOWN" model="UNKNOWN" make="HL7" type="Network">
+  <settings>
+   <s name="4084_UNKNOWN">50</s>
+   <s name="HL7_PATID_INT" />
+  </settings>
+  <measurements>
+   <m name="1_HR">104</m>
+   <m name="2_NIBPSYS">106</m>
+   <m name="3_NIBPDIA">87</m>
+   <m name="4_NIBPMEAN">92</m>
+   <m name="14_SPO2PCT">95</m>
+   <m name="2259_ARTERIALLINESYS1">112</m>
+   <m name="2260_ARTERIALLINEDIA1">62</m>
+   <m name="2261_ARTERIALLINEMEAN1">76</m>
+   <m name="4093_CVP">280</m>
+   <m name="4550_RR">20</m>
+  </measurements>
+  <alarms />
+  <status>UP</status>
+ </device>
+</cpc>
+<cpc seq="16" type="LA" bid="LA-127.0.0.1" conntype="publisher" version="1.0" datetime="2008-01-23T06:52:31">
+ <device bid="M2202" timeout="30500" version="UNKNOWN" model="UNKNOWN" make="HL7" type="Network">
+  <settings>
+   <s name="4084_UNKNOWN">71</s>
+   <s name="HL7_PATID_INT" />
+  </settings>
+  <measurements>
+   <m name="1_HR">71</m>
+   <m name="2_NIBPSYS">106</m>
+   <m name="3_NIBPDIA">87</m>
+   <m name="4_NIBPMEAN">92</m>
+   <m name="14_SPO2PCT">96</m>
+   <m name="2259_ARTERIALLINESYS1">112</m>
+   <m name="2260_ARTERIALLINEDIA1">62</m>
+   <m name="2261_ARTERIALLINEMEAN1">76</m>
+   <m name="4093_CVP">280</m>
+   <m name="4550_RR">17</m>
+  </measurements>
+  <alarms />
+  <status>UP</status>
+ </device>
+</cpc>
+<cpc seq="17" type="LA" bid="LA-127.0.0.1" conntype="publisher" version="1.0" datetime="2008-01-23T06:52:31">
+ <device bid="M2203" timeout="30500" version="UNKNOWN" model="UNKNOWN" make="HL7" type="Network">
+  <settings>
+   <s name="4084_UNKNOWN">98</s>
+   <s name="HL7_PATID_INT" />
+  </settings>
+  <measurements>
+   <m name="1_HR">98</m>
+   <m name="2_NIBPSYS">106</m>
+   <m name="3_NIBPDIA">87</m>
+   <m name="4_NIBPMEAN">92</m>
+   <m name="14_SPO2PCT">94</m>
+   <m name="2259_ARTERIALLINESYS1">114</m>
+   <m name="2260_ARTERIALLINEDIA1">53</m>
+   <m name="2261_ARTERIALLINEMEAN1">68</m>
+   <m name="3571_TEMPRECTAL">38.1</m>
+   <m name="4093_CVP">10</m>
+   <m name="4550_RR">24</m>
+  </measurements>
+  <alarms />
+  <status>UP</status>
+ </device>
+</cpc>
+<cpc seq="18" type="LA" bid="LA-127.0.0.1" conntype="publisher" version="1.0" datetime="2008-01-23T06:52:31">
+ <device bid="M2204" timeout="30500" version="UNKNOWN" model="UNKNOWN" make="HL7" type="Network">
+  <settings>
+   <s name="4084_UNKNOWN">98</s>
+   <s name="HL7_PATID_INT" />
+  </settings>
+  <measurements>
+   <m name="1_HR">104</m>
+   <m name="2_NIBPSYS">106</m>
+   <m name="3_NIBPDIA">87</m>
+   <m name="4_NIBPMEAN">92</m>
+   <m name="14_SPO2PCT">94</m>
+   <m name="2259_ARTERIALLINESYS1">95</m>
+   <m name="2260_ARTERIALLINEDIA1">88</m>
+   <m name="2261_ARTERIALLINEMEAN1">92</m>
+   <m name="3571_TEMPRECTAL">37.4</m>
+   <m name="4093_CVP">11</m>
+   <m name="4550_RR">15</m>
+  </measurements>
+  <alarms />
+  <status>UP</status>
+ </device>
+</cpc>
+<cpc seq="19" type="LA" bid="LA-127.0.0.1" conntype="publisher" version="1.0" datetime="2008-01-23T06:52:31">
+ <device bid="M2205" timeout="30500" version="UNKNOWN" model="UNKNOWN" make="HL7" type="Network">
+  <settings>
+   <s name="4084_UNKNOWN">89</s>
+   <s name="HL7_PATID_INT" />
+  </settings>
+  <measurements>
+   <m name="1_HR">89</m>
+   <m name="2_NIBPSYS">106</m>
+   <m name="3_NIBPDIA">87</m>
+   <m name="4_NIBPMEAN">92</m>
+   <m name="14_SPO2PCT">93</m>
+   <m name="2259_ARTERIALLINESYS1">142</m>
+   <m name="2260_ARTERIALLINEDIA1">64</m>
+   <m name="2261_ARTERIALLINEMEAN1">85</m>
+   <m name="3571_TEMPRECTAL">37.4</m>
+   <m name="4093_CVP">11</m>
+   <m name="4550_RR">11</m>
+  </measurements>
+  <alarms />
+  <status>UP</status>
+ </device>
+</cpc>
+<cpc seq="20" type="LA" bid="LA-127.0.0.1" conntype="publisher" version="1.0" datetime="2008-01-23T06:52:32">
+ <device bid="M2206" timeout="30500" version="UNKNOWN" model="UNKNOWN" make="HL7" type="Network">
+  <settings>
+   <s name="4084_UNKNOWN">89</s>
+   <s name="HL7_PATID_INT" />
+  </settings>
+  <measurements>
+   <m name="1_HR">124</m>
+   <m name="2_NIBPSYS">106</m>
+   <m name="3_NIBPDIA">87</m>
+   <m name="4_NIBPMEAN">92</m>
+   <m name="14_SPO2PCT">93</m>
+   <m name="2259_ARTERIALLINESYS1">142</m>
+   <m name="2260_ARTERIALLINEDIA1">64</m>
+   <m name="2261_ARTERIALLINEMEAN1">85</m>
+   <m name="3571_TEMPRECTAL">37.4</m>
+   <m name="4093_CVP">11</m>
+   <m name="4550_RR">29</m>
+  </measurements>
+  <alarms />
+  <status>UP</status>
+ </device>
+</cpc>
+<cpc seq="21" type="LA" bid="LA-127.0.0.1" conntype="publisher" version="1.0" datetime="2008-01-23T06:52:32">
+ <device bid="M2207" timeout="30500" version="UNKNOWN" model="UNKNOWN" make="HL7" type="Network">
+  <settings>
+   <s name="4084_UNKNOWN">65</s>
+   <s name="HL7_PATID_INT" />
+  </settings>
+  <measurements>
+   <m name="1_HR">92</m>
+   <m name="2_NIBPSYS">106</m>
+   <m name="3_NIBPDIA">87</m>
+   <m name="4_NIBPMEAN">92</m>
+   <m name="14_SPO2PCT">99</m>
+   <m name="2259_ARTERIALLINESYS1">147</m>
+   <m name="2260_ARTERIALLINEDIA1">50</m>
+   <m name="2261_ARTERIALLINEMEAN1">76</m>
+   <m name="3571_TEMPRECTAL">37.4</m>
+   <m name="4093_CVP">11</m>
+   <m name="4539_PASYS">45</m>
+   <m name="4540_PADIA">20</m>
+   <m name="4541_PAMEAN">28</m>
+   <m name="4550_RR">15</m>
+  </measurements>
+  <alarms />
+  <status>UP</status>
+ </device>
+</cpc>
+<cpc seq="22" type="LA" bid="LA-127.0.0.1" conntype="publisher" version="1.0" datetime="2008-01-23T06:52:32">
+ <device bid="M2208" timeout="30500" version="UNKNOWN" model="UNKNOWN" make="HL7" type="Network">
+  <settings>
+   <s name="4084_UNKNOWN">72</s>
+   <s name="HL7_PATID_INT" />
+  </settings>
+  <measurements>
+   <m name="1_HR">72</m>
+   <m name="2_NIBPSYS">106</m>
+   <m name="3_NIBPDIA">87</m>
+   <m name="4_NIBPMEAN">92</m>
+   <m name="14_SPO2PCT">100</m>
+   <m name="2259_ARTERIALLINESYS1">138</m>
+   <m name="2260_ARTERIALLINEDIA1">68</m>
+   <m name="2261_ARTERIALLINEMEAN1">97</m>
+   <m name="3571_TEMPRECTAL">37.4</m>
+   <m name="4093_CVP">9</m>
+   <m name="4539_PASYS">45</m>
+   <m name="4540_PADIA">20</m>
+   <m name="4541_PAMEAN">28</m>
+   <m name="4550_RR">19</m>
+  </measurements>
+  <alarms />
+  <status>UP</status>
+ </device>
+</cpc>
+<cpc seq="23" type="LA" bid="LA-127.0.0.1" conntype="publisher" version="1.0" datetime="2008-01-23T06:52:32">
+ <device bid="M2209" timeout="30500" version="UNKNOWN" model="UNKNOWN" make="HL7" type="Network">
+  <settings>
+   <s name="4084_UNKNOWN">65</s>
+   <s name="HL7_PATID_INT" />
+  </settings>
+  <measurements>
+   <m name="1_HR">65</m>
+   <m name="2_NIBPSYS">106</m>
+   <m name="3_NIBPDIA">87</m>
+   <m name="4_NIBPMEAN">92</m>
+   <m name="14_SPO2PCT">100</m>
+   <m name="2259_ARTERIALLINESYS1">138</m>
+   <m name="2260_ARTERIALLINEDIA1">68</m>
+   <m name="2261_ARTERIALLINEMEAN1">97</m>
+   <m name="3571_TEMPRECTAL">37.4</m>
+   <m name="4093_CVP">9</m>
+   <m name="4539_PASYS">45</m>
+   <m name="4540_PADIA">20</m>
+   <m name="4541_PAMEAN">28</m>
+   <m name="4550_RR">25</m>
+  </measurements>
+  <alarms />
+  <status>UP</status>
+ </device>
+</cpc>
+<cpc seq="24" type="LA" bid="LA-127.0.0.1" conntype="publisher" version="1.0" datetime="2008-01-23T06:52:32">
+ <device bid="M2210" timeout="30500" version="UNKNOWN" model="UNKNOWN" make="HL7" type="Network">
+  <settings>
+   <s name="4084_UNKNOWN">63</s>
+   <s name="HL7_PATID_INT" />
+  </settings>
+  <measurements>
+   <m name="1_HR">63</m>
+   <m name="2_NIBPSYS">106</m>
+   <m name="3_NIBPDIA">87</m>
+   <m name="4_NIBPMEAN">92</m>
+   <m name="14_SPO2PCT">97</m>
+   <m name="2259_ARTERIALLINESYS1">138</m>
+   <m name="2260_ARTERIALLINEDIA1">68</m>
+   <m name="2261_ARTERIALLINEMEAN1">97</m>
+   <m name="3571_TEMPRECTAL">37.4</m>
+   <m name="4093_CVP">9</m>
+   <m name="4539_PASYS">45</m>
+   <m name="4540_PADIA">20</m>
+   <m name="4541_PAMEAN">28</m>
+   <m name="4550_RR">20</m>
+  </measurements>
+  <alarms />
+  <status>UP</status>
+ </device>
+</cpc>
+<cpc seq="25" type="LA" bid="LA-127.0.0.1" conntype="publisher" version="1.0" datetime="2008-01-23T06:52:32">
+ <device bid="M2211" timeout="30500" version="UNKNOWN" model="UNKNOWN" make="HL7" type="Network">
+  <settings>
+   <s name="4084_UNKNOWN">99</s>
+   <s name="HL7_PATID_INT" />
+  </settings>
+  <measurements>
+   <m name="1_HR">95</m>
+   <m name="2_NIBPSYS">106</m>
+   <m name="3_NIBPDIA">87</m>
+   <m name="4_NIBPMEAN">92</m>
+   <m name="14_SPO2PCT">96</m>
+   <m name="2259_ARTERIALLINESYS1">165</m>
+   <m name="2260_ARTERIALLINEDIA1">96</m>
+   <m name="2261_ARTERIALLINEMEAN1">119</m>
+   <m name="2341_TEMPBLOOD">37</m>
+   <m name="3571_TEMPRECTAL">37.4</m>
+   <m name="4093_CVP">9</m>
+   <m name="4539_PASYS">45</m>
+   <m name="4540_PADIA">20</m>
+   <m name="4541_PAMEAN">28</m>
+   <m name="4550_RR">18</m>
+  </measurements>
+  <alarms />
+  <status>UP</status>
+ </device>
+</cpc>
+<cpc seq="26" type="LA" bid="LA-127.0.0.1" conntype="publisher" version="1.0" datetime="2008-01-23T06:52:32">
+ <device bid="M2212" timeout="30500" version="UNKNOWN" model="UNKNOWN" make="HL7" type="Network">
+  <settings>
+   <s name="4084_UNKNOWN">52</s>
+   <s name="HL7_PATID_INT" />
+  </settings>
+  <measurements>
+   <m name="1_HR">78</m>
+   <m name="2_NIBPSYS">106</m>
+   <m name="3_NIBPDIA">87</m>
+   <m name="4_NIBPMEAN">92</m>
+   <m name="14_SPO2PCT">92</m>
+   <m name="2259_ARTERIALLINESYS1">114</m>
+   <m name="2260_ARTERIALLINEDIA1">44</m>
+   <m name="2261_ARTERIALLINEMEAN1">59</m>
+   <m name="2341_TEMPBLOOD">37</m>
+   <m name="3571_TEMPRECTAL">37.4</m>
+   <m name="4093_CVP">9</m>
+   <m name="4539_PASYS">45</m>
+   <m name="4540_PADIA">20</m>
+   <m name="4541_PAMEAN">28</m>
+   <m name="4550_RR">24</m>
+  </measurements>
+  <alarms />
+  <status>UP</status>
+ </device>
+</cpc>
+<cpc seq="27" type="LA" bid="LA-127.0.0.1" conntype="publisher" version="1.0" datetime="2008-01-23T06:52:32">
+ <device bid="M2215" timeout="30500" version="UNKNOWN" model="UNKNOWN" make="HL7" type="Network">
+  <settings>
+   <s name="4084_UNKNOWN">67</s>
+   <s name="HL7_PATID_INT" />
+  </settings>
+  <measurements>
+   <m name="1_HR">72</m>
+   <m name="2_NIBPSYS">106</m>
+   <m name="3_NIBPDIA">87</m>
+   <m name="4_NIBPMEAN">92</m>
+   <m name="14_SPO2PCT">97</m>
+   <m name="2259_ARTERIALLINESYS1">81</m>
+   <m name="2260_ARTERIALLINEDIA1">45</m>
+   <m name="2261_ARTERIALLINEMEAN1">55</m>
+   <m name="2341_TEMPBLOOD">37</m>
+   <m name="3571_TEMPRECTAL">37.4</m>
+   <m name="4093_CVP">11</m>
+   <m name="4539_PASYS">45</m>
+   <m name="4540_PADIA">20</m>
+   <m name="4541_PAMEAN">28</m>
+   <m name="4550_RR">11</m>
+  </measurements>
+  <alarms />
+  <status>UP</status>
+ </device>
+</cpc>
+<cpc seq="28" type="LA" bid="LA-127.0.0.1" conntype="publisher" version="1.0" datetime="2008-01-23T06:52:32">
+ <device bid="M2216" timeout="30500" version="UNKNOWN" model="UNKNOWN" make="HL7" type="Network">
+  <settings>
+   <s name="4084_UNKNOWN">57</s>
+   <s name="HL7_PATID_INT" />
+  </settings>
+  <measurements>
+   <m name="1_HR">57</m>
+   <m name="2_NIBPSYS">106</m>
+   <m name="3_NIBPDIA">87</m>
+   <m name="4_NIBPMEAN">92</m>
+   <m name="14_SPO2PCT">91</m>
+   <m name="2259_ARTERIALLINESYS1">103</m>
+   <m name="2260_ARTERIALLINEDIA1">46</m>
+   <m name="2261_ARTERIALLINEMEAN1">62</m>
+   <m name="2341_TEMPBLOOD">37</m>
+   <m name="3571_TEMPRECTAL">37.4</m>
+   <m name="4093_CVP">11</m>
+   <m name="4539_PASYS">45</m>
+   <m name="4540_PADIA">20</m>
+   <m name="4541_PAMEAN">28</m>
+   <m name="4550_RR">19</m>
+  </measurements>
+  <alarms />
+  <status>UP</status>
+ </device>
+</cpc>
+<cpc seq="29" type="LA" bid="LA-127.0.0.1" conntype="publisher" version="1.0" datetime="2008-01-23T06:52:32">
+ <device bid="M2217" timeout="30500" version="UNKNOWN" model="UNKNOWN" make="HL7" type="Network">
+  <settings>
+   <s name="4084_UNKNOWN">87</s>
+   <s name="HL7_PATID_INT" />
+  </settings>
+  <measurements>
+   <m name="1_HR">86</m>
+   <m name="2_NIBPSYS">106</m>
+   <m name="3_NIBPDIA">87</m>
+   <m name="4_NIBPMEAN">92</m>
+   <m name="14_SPO2PCT">93</m>
+   <m name="2259_ARTERIALLINESYS1">97</m>
+   <m name="2260_ARTERIALLINEDIA1">47</m>
+   <m name="2261_ARTERIALLINEMEAN1">62</m>
+   <m name="2341_TEMPBLOOD">37</m>
+   <m name="3571_TEMPRECTAL">37.4</m>
+   <m name="4093_CVP">10</m>
+   <m name="4539_PASYS">45</m>
+   <m name="4540_PADIA">20</m>
+   <m name="4541_PAMEAN">28</m>
+   <m name="4550_RR">16</m>
+  </measurements>
+  <alarms />
+  <status>UP</status>
+ </device>
+</cpc>
+<cpc seq="30" type="LA" bid="LA-127.0.0.1" conntype="publisher" version="1.0" datetime="2008-01-23T06:52:32">
+ <device bid="M2218" timeout="30500" version="UNKNOWN" model="UNKNOWN" make="HL7" type="Network">
+  <settings>
+   <s name="4084_UNKNOWN">86</s>
+   <s name="HL7_PATID_INT" />
+  </settings>
+  <measurements>
+   <m name="1_HR">86</m>
+   <m name="2_NIBPSYS">106</m>
+   <m name="3_NIBPDIA">87</m>
+   <m name="4_NIBPMEAN">92</m>
+   <m name="14_SPO2PCT">98</m>
+   <m name="2259_ARTERIALLINESYS1">97</m>
+   <m name="2260_ARTERIALLINEDIA1">47</m>
+   <m name="2261_ARTERIALLINEMEAN1">62</m>
+   <m name="2341_TEMPBLOOD">37</m>
+   <m name="3571_TEMPRECTAL">37.4</m>
+   <m name="4093_CVP">10</m>
+   <m name="4539_PASYS">45</m>
+   <m name="4540_PADIA">20</m>
+   <m name="4541_PAMEAN">28</m>
+   <m name="4550_RR">22</m>
+  </measurements>
+  <alarms />
+  <status>UP</status>
+ </device>
+</cpc>
+<cpc seq="31" type="LA" bid="LA-127.0.0.1" conntype="publisher" version="1.0" datetime="2008-01-23T06:52:32">
+ <device bid="M2219" timeout="30500" version="UNKNOWN" model="UNKNOWN" make="HL7" type="Network">
+  <settings>
+   <s name="4084_UNKNOWN">96</s>
+   <s name="HL7_PATID_INT" />
+  </settings>
+  <measurements>
+   <m name="1_HR">96</m>
+   <m name="2_NIBPSYS">106</m>
+   <m name="3_NIBPDIA">87</m>
+   <m name="4_NIBPMEAN">92</m>
+   <m name="14_SPO2PCT">97</m>
+   <m name="501_ARTERIALLINESYS2">143</m>
+   <m name="502_ARTERIALLINEDIA2">57</m>
+   <m name="503_ARTERIALLINEMEAN2">82</m>
+   <m name="2259_ARTERIALLINESYS1">97</m>
+   <m name="2260_ARTERIALLINEDIA1">47</m>
+   <m name="2261_ARTERIALLINEMEAN1">62</m>
+   <m name="2341_TEMPBLOOD">37</m>
+   <m name="3571_TEMPRECTAL">37.4</m>
+   <m name="4093_CVP">10</m>
+   <m name="4539_PASYS">45</m>
+   <m name="4540_PADIA">20</m>
+   <m name="4541_PAMEAN">28</m>
+   <m name="4550_RR">15</m>
+  </measurements>
+  <alarms />
+  <status>UP</status>
+ </device>
+</cpc>
+<cpc seq="32" type="LA" bid="LA-127.0.0.1" conntype="publisher" version="1.0" datetime="2008-01-23T06:52:32">
+ <device bid="M3201" timeout="30500" version="UNKNOWN" model="UNKNOWN" make="HL7" type="Network">
+  <settings>
+   <s name="4084_UNKNOWN">83</s>
+   <s name="HL7_PATID_INT" />
+  </settings>
+  <measurements>
+   <m name="1_HR">83</m>
+   <m name="2_NIBPSYS">106</m>
+   <m name="3_NIBPDIA">87</m>
+   <m name="4_NIBPMEAN">92</m>
+   <m name="14_SPO2PCT">95</m>
+   <m name="501_ARTERIALLINESYS2">143</m>
+   <m name="502_ARTERIALLINEDIA2">57</m>
+   <m name="503_ARTERIALLINEMEAN2">82</m>
+   <m name="2259_ARTERIALLINESYS1">97</m>
+   <m name="2260_ARTERIALLINEDIA1">47</m>
+   <m name="2261_ARTERIALLINEMEAN1">62</m>
+   <m name="2341_TEMPBLOOD">37</m>
+   <m name="3571_TEMPRECTAL">37.4</m>
+   <m name="4093_CVP">10</m>
+   <m name="4539_PASYS">45</m>
+   <m name="4540_PADIA">20</m>
+   <m name="4541_PAMEAN">28</m>
+   <m name="4550_RR">17</m>
+  </measurements>
+  <alarms />
+  <status>UP</status>
+ </device>
+</cpc>
+<cpc seq="33" type="LA" bid="LA-127.0.0.1" conntype="publisher" version="1.0" datetime="2008-01-23T06:52:32">
+ <device bid="M3204" timeout="30500" version="UNKNOWN" model="UNKNOWN" make="HL7" type="Network">
+  <settings>
+   <s name="4084_UNKNOWN">97</s>
+   <s name="HL7_PATID_INT" />
+  </settings>
+  <measurements>
+   <m name="1_HR">97</m>
+   <m name="2_NIBPSYS">106</m>
+   <m name="3_NIBPDIA">87</m>
+   <m name="4_NIBPMEAN">92</m>
+   <m name="14_SPO2PCT">95</m>
+   <m name="501_ARTERIALLINESYS2">143</m>
+   <m name="502_ARTERIALLINEDIA2">57</m>
+   <m name="503_ARTERIALLINEMEAN2">82</m>
+   <m name="2259_ARTERIALLINESYS1">97</m>
+   <m name="2260_ARTERIALLINEDIA1">47</m>
+   <m name="2261_ARTERIALLINEMEAN1">62</m>
+   <m name="2341_TEMPBLOOD">37</m>
+   <m name="3571_TEMPRECTAL">37.4</m>
+   <m name="4093_CVP">10</m>
+   <m name="4539_PASYS">45</m>
+   <m name="4540_PADIA">20</m>
+   <m name="4541_PAMEAN">28</m>
+   <m name="4550_RR">18</m>
+  </measurements>
+  <alarms />
+  <status>UP</status>
+ </device>
+</cpc>
+<cpc seq="34" type="LA" bid="LA-127.0.0.1" conntype="publisher" version="1.0" datetime="2008-01-23T06:52:32">
+ <device bid="M3205" timeout="30500" version="UNKNOWN" model="UNKNOWN" make="HL7" type="Network">
+  <settings>
+   <s name="4084_UNKNOWN">98</s>
+   <s name="HL7_PATID_INT" />
+  </settings>
+  <measurements>
+   <m name="1_HR">95</m>
+   <m name="2_NIBPSYS">106</m>
+   <m name="3_NIBPDIA">87</m>
+   <m name="4_NIBPMEAN">92</m>
+   <m name="14_SPO2PCT">94</m>
+   <m name="501_ARTERIALLINESYS2">143</m>
+   <m name="502_ARTERIALLINEDIA2">57</m>
+   <m name="503_ARTERIALLINEMEAN2">82</m>
+   <m name="2259_ARTERIALLINESYS1">103</m>
+   <m name="2260_ARTERIALLINEDIA1">53</m>
+   <m name="2261_ARTERIALLINEMEAN1">69</m>
+   <m name="2341_TEMPBLOOD">37</m>
+   <m name="3571_TEMPRECTAL">37.9</m>
+   <m name="4093_CVP">8</m>
+   <m name="4539_PASYS">45</m>
+   <m name="4540_PADIA">20</m>
+   <m name="4541_PAMEAN">28</m>
+   <m name="4550_RR">22</m>
+  </measurements>
+  <alarms />
+  <status>UP</status>
+ </device>
+</cpc>

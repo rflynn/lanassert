@@ -1,0 +1,103 @@
+Search for interface 'eth0'... OK.
+RULE ADD "ETH Expected Protocol"
+RULE ADD "ETH Known MAC Addr"
+RULE ADD "CPC ARP pluto 10.43.96.8"
+RULE ADD "CPC ARP pluto 10.43.96.9"
+RULE ADD "CPC ARP mars"
+RULE ADD "CPC ARP mercury"
+RULE ADD "CPC ARP jupiter"
+RULE ADD "CPC ARP fraggle"
+RULE ADD "CPC ARP saleslogix"
+RULE ADD "CPC DHCP failure 169.254.0.0/16"
+RULE ADD "CPC ARP:REQ SRC is legit"
+RULE ADD "CPC ARP:RESP SRC IP is legit"
+RULE ADD "CPC DHCP SERVER AUTHORIZED"
+RULE ADD "CPC DNS:REQ DEST AUTHORIZED"
+RULE ADD "CPC DNS:RESP SRC AUTHORIZED"
+RULE ADD "CPC Valid Local IP"
+RULE ADD "CPC IP External Traffic -> Authorized Gateways"
+RULE ADD "CPC IP External Source <- Authorized Gateway"
+RULE ADD "CPC IP BOGONS!"
+RULE SKIP "CPC ICMP Payload"
+RULE ADD "CPC Known Wi-Fi AP"
+RULE ADD "CPC Loopback is Cisco"
+RULE ADD "CPC Cisco Switch LLC"
+RULE ADD "CPC NBDGM Known Dest"
+RULE SKIP "CPC NBNS OP HIGHLIGHT"
+Rules loaded.
+Opening eth0... OK.
+FAIL CPC IP External Source <- Authorized Gateway
+  [0] LOGIC    frame=2097      date=2007-01-30T11:42:39.619 len=54 used=54
+  [1] ETH      h_dest=00:0b:db:16:57:f3 h_source=00:18:8b:3e:a5:53 h_proto=0x0800(IP)
+  [2] IP       ver=4 hlen=20  tos=0x00 totlen=40    id=0x5358 dontfrag=1 morefrag=0 src=38.99.110.61    dst=10.43.97.14     proto=0x06
+  [3] TCP      srcport=80    dstport=3456  seq=3175540848 ackseq=1440856189 window=6432  chksum=0xd4f4 urg_ptr=0    flags=(doff=0005,ack)
+FAIL CPC IP External Source <- Authorized Gateway
+  [0] LOGIC    frame=2099      date=2007-01-30T11:42:39.619 len=54 used=54
+  [1] ETH      h_dest=00:0b:db:16:57:f3 h_source=00:18:8b:3e:a5:53 h_proto=0x0800(IP)
+  [2] IP       ver=4 hlen=20  tos=0x00 totlen=40    id=0x535A dontfrag=1 morefrag=0 src=38.99.110.61    dst=10.43.97.14     proto=0x06
+  [3] TCP      srcport=80    dstport=3456  seq=3175541535 ackseq=1440856189 window=6432  chksum=0xd244 urg_ptr=0    flags=(doff=0005,fin,ack)
+FAIL CPC IP External Source <- Authorized Gateway
+  [0] LOGIC    frame=2102      date=2007-01-30T11:42:39.625 len=54 used=54
+  [1] ETH      h_dest=00:0b:db:16:57:f3 h_source=00:18:8b:3e:a5:53 h_proto=0x0800(IP)
+  [2] IP       ver=4 hlen=20  tos=0x00 totlen=40    id=0x0000 dontfrag=1 morefrag=0 src=38.99.110.61    dst=10.43.97.14     proto=0x06
+  [3] TCP      srcport=80    dstport=3456  seq=3175541536 ackseq=1440856190 window=6432  chksum=0xd243 urg_ptr=0    flags=(doff=0005,ack)
+FAIL CPC IP External Source <- Authorized Gateway
+  [0] LOGIC    frame=6354      date=2007-01-30T11:42:48.107 len=54 used=54
+  [1] ETH      h_dest=00:0b:db:16:57:f3 h_source=00:18:8b:3e:a5:53 h_proto=0x0800(IP)
+  [2] IP       ver=4 hlen=20  tos=0x00 totlen=40    id=0x19C5 dontfrag=1 morefrag=0 src=38.99.110.61    dst=10.43.97.14     proto=0x06
+  [3] TCP      srcport=80    dstport=3470  seq=3179272864 ackseq=2527601757 window=6432  chksum=0x35d7 urg_ptr=0    flags=(doff=0005,ack)
+FAIL CPC IP External Source <- Authorized Gateway
+  [0] LOGIC    frame=7100      date=2007-01-30T11:42:49.592 len=54 used=54
+  [1] ETH      h_dest=00:0b:db:16:57:f3 h_source=00:18:8b:3e:a5:53 h_proto=0x0800(IP)
+  [2] IP       ver=4 hlen=20  tos=0x00 totlen=40    id=0x19C7 dontfrag=1 morefrag=0 src=38.99.110.61    dst=10.43.97.14     proto=0x06
+  [3] TCP      srcport=80    dstport=3470  seq=3179273273 ackseq=2527602203 window=7504  chksum=0x2e50 urg_ptr=0    flags=(doff=0005,ack)
+FAIL CPC IP External Source <- Authorized Gateway
+  [0] LOGIC    frame=7142      date=2007-01-30T11:42:49.639 len=54 used=54
+  [1] ETH      h_dest=00:0b:db:16:57:f3 h_source=00:18:8b:3e:a5:53 h_proto=0x0800(IP)
+  [2] IP       ver=4 hlen=20  tos=0x00 totlen=40    id=0x16CB dontfrag=1 morefrag=0 src=38.99.110.61    dst=10.43.97.14     proto=0x06
+  [3] TCP      srcport=80    dstport=3473  seq=3184906786 ackseq=197738946 window=6432  chksum=0xab76 urg_ptr=0    flags=(doff=0005,ack)
+FAIL CPC IP External Source <- Authorized Gateway
+  [0] LOGIC    frame=7222      date=2007-01-30T11:42:49.809 len=54 used=54
+  [1] ETH      h_dest=00:0b:db:16:57:f3 h_source=00:18:8b:3e:a5:53 h_proto=0x0800(IP)
+  [2] IP       ver=4 hlen=20  tos=0x00 totlen=40    id=0xFCEE dontfrag=1 morefrag=0 src=38.113.229.116  dst=10.43.97.14     proto=0x06
+  [3] TCP      srcport=80    dstport=3474  seq=3176937972 ackseq=2210644621 window=6432  chksum=0xd411 urg_ptr=0    flags=(doff=0005,ack)
+FAIL CPC IP External Source <- Authorized Gateway
+  [0] LOGIC    frame=7243      date=2007-01-30T11:42:49.819 len=54 used=54
+  [1] ETH      h_dest=00:0b:db:16:57:f3 h_source=00:18:8b:3e:a5:53 h_proto=0x0800(IP)
+  [2] IP       ver=4 hlen=20  tos=0x00 totlen=40    id=0x674A dontfrag=1 morefrag=0 src=38.113.229.116  dst=10.43.97.14     proto=0x06
+  [3] TCP      srcport=80    dstport=3475  seq=3181290068 ackseq=3959104088 window=6432  chksum=0xa36b urg_ptr=0    flags=(doff=0005,ack)
+FAIL CPC IP External Source <- Authorized Gateway
+  [0] LOGIC    frame=7245      date=2007-01-30T11:42:49.820 len=54 used=54
+  [1] ETH      h_dest=00:0b:db:16:57:f3 h_source=00:18:8b:3e:a5:53 h_proto=0x0800(IP)
+  [2] IP       ver=4 hlen=20  tos=0x00 totlen=40    id=0x674C dontfrag=1 morefrag=0 src=38.113.229.116  dst=10.43.97.14     proto=0x06
+  [3] TCP      srcport=80    dstport=3475  seq=3181290753 ackseq=3959104088 window=6432  chksum=0xa0bd urg_ptr=0    flags=(doff=0005,fin,ack)
+FAIL CPC IP External Source <- Authorized Gateway
+  [0] LOGIC    frame=7248      date=2007-01-30T11:42:49.823 len=54 used=54
+  [1] ETH      h_dest=00:0b:db:16:57:f3 h_source=00:18:8b:3e:a5:53 h_proto=0x0800(IP)
+  [2] IP       ver=4 hlen=20  tos=0x00 totlen=40    id=0x0000 dontfrag=1 morefrag=0 src=38.113.229.116  dst=10.43.97.14     proto=0x06
+  [3] TCP      srcport=80    dstport=3475  seq=3181290754 ackseq=3959104089 window=6432  chksum=0xa0bc urg_ptr=0    flags=(doff=0005,ack)
+FAIL CPC IP External Source <- Authorized Gateway
+  [0] LOGIC    frame=7357      date=2007-01-30T11:42:50.030 len=54 used=54
+  [1] ETH      h_dest=00:0b:db:16:57:f3 h_source=00:18:8b:3e:a5:53 h_proto=0x0800(IP)
+  [2] IP       ver=4 hlen=20  tos=0x00 totlen=40    id=0x4849 dontfrag=1 morefrag=0 src=80.67.86.40     dst=10.43.97.14     proto=0x06
+  [3] TCP      srcport=80    dstport=3476  seq=3187510555 ackseq=3519117259 window=6564  chksum=0xe201 urg_ptr=0    flags=(doff=0005,ack)
+FAIL CPC IP External Source <- Authorized Gateway
+  [0] LOGIC    frame=7370      date=2007-01-30T11:42:50.031 len=54 used=54
+  [1] ETH      h_dest=00:0b:db:16:57:f3 h_source=00:18:8b:3e:a5:53 h_proto=0x0800(IP)
+  [2] IP       ver=4 hlen=20  tos=0x00 totlen=40    id=0x5A06 dontfrag=1 morefrag=0 src=80.67.86.40     dst=10.43.97.14     proto=0x06
+  [3] TCP      srcport=80    dstport=3477  seq=3175194453 ackseq=778582269 window=6600  chksum=0xb286 urg_ptr=0    flags=(doff=0005,ack)
+FAIL CPC IP External Source <- Authorized Gateway
+  [0] LOGIC    frame=7372      date=2007-01-30T11:42:50.031 len=54 used=54
+  [1] ETH      h_dest=00:0b:db:16:57:f3 h_source=00:18:8b:3e:a5:53 h_proto=0x0800(IP)
+  [2] IP       ver=4 hlen=20  tos=0x00 totlen=40    id=0x9AA8 dontfrag=1 morefrag=0 src=80.67.86.40     dst=10.43.97.14     proto=0x06
+  [3] TCP      srcport=80    dstport=3478  seq=3185598459 ackseq=2630862433 window=6432  chksum=0xf61c urg_ptr=0    flags=(doff=0005,ack)
+FAIL CPC IP External Source <- Authorized Gateway
+  [0] LOGIC    frame=7799      date=2007-01-30T11:42:50.884 len=54 used=54
+  [1] ETH      h_dest=00:0b:db:16:57:f3 h_source=00:18:8b:3e:a5:53 h_proto=0x0800(IP)
+  [2] IP       ver=4 hlen=20  tos=0x00 totlen=40    id=0x0A5F dontfrag=1 morefrag=0 src=64.21.46.144    dst=10.43.97.14     proto=0x06
+  [3] TCP      srcport=80    dstport=3483  seq=3179990135 ackseq=1203821302 window=7248  chksum=0xff01 urg_ptr=0    flags=(doff=0005,ack)
+FAIL CPC IP External Source <- Authorized Gateway
+  [0] LOGIC    frame=7833      date=2007-01-30T11:42:50.931 len=54 used=54
+  [1] ETH      h_dest=00:0b:db:16:57:f3 h_source=00:18:8b:3e:a5:53 h_proto=0x0800(IP)
+  [2] IP       ver=4 hlen=20  tos=0x00 totlen=40    id=0xD525 dontfrag=1 morefrag=0 src=4.78.189.36     dst=10.43.97.14     proto=0x06
+  [3] TCP      srcport=80    dstport=3484  seq=3177386775 ackseq=1956054322 window=6741  chksum=0x10a4 urg_ptr=0    flags=(doff=00
